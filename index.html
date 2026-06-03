@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JARVIS</title>
+<style>
+  html,body{height:100%;margin:0;background:#0b0b0d;color:#e8e6df;
+    font-family:-apple-system,Segoe UI,Roboto,sans-serif;
+    display:flex;align-items:center;justify-content:center;text-align:center}
+  .box{max-width:340px;padding:24px}
+  .orb{width:64px;height:64px;border-radius:50%;margin:0 auto 18px;
+    background:conic-gradient(from 0deg,#6aa0ff,#9b6aff,#ffb86a,#6aa0ff);
+    animation:spin 2.4s linear infinite,breath 2s ease-in-out infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes breath{0%,100%{filter:brightness(.8)}50%{filter:brightness(1.3)}}
+  a{color:#9b6aff;font-weight:600;text-decoration:none}
+  .small{opacity:.5;font-size:13px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="orb"></div>
+  <div id="msg">Conectando con JARVIS…</div>
+  <div class="small" id="sub"></div>
+</div>
+<script>
+  // Lee la URL viva del túnel (la actualiza el server cada 20s) y redirige.
+  var RAW = "https://gist.githubusercontent.com/ccuadran4532/3fe3cb21420f6c655bf73ab1e34314bc/raw/jarvis-url.txt";
+  fetch(RAW + "?t=" + Date.now())
+    .then(function(r){ return r.text(); })
+    .then(function(u){
+      u = (u || "").trim();
+      if (u.indexOf("http") === 0) {
+        document.getElementById("sub").textContent = u;
+        window.location.replace(u);
+      } else { throw new Error("URL vacía"); }
+    })
+    .catch(function(e){
+      document.getElementById("msg").textContent = "JARVIS no está en línea ahora.";
+      document.getElementById("sub").innerHTML =
+        "Enciende el PC / corre start_jarvis.ps1 y recarga.<br><a href='javascript:location.reload()'>Reintentar</a>";
+    });
+</script>
+</body>
+</html>
