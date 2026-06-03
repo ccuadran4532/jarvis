@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JARVIS</title>
+<title>Mika</title>
 <link rel="icon" type="image/svg+xml" href="icon.svg">
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="manifest" href="manifest.json">
@@ -25,7 +25,7 @@
 <body>
 <div class="box">
   <div class="orb"></div>
-  <div id="msg">Conectando con JARVIS…</div>
+  <div id="msg">Conectando con Mika…</div>
   <div class="small" id="sub"></div>
 </div>
 <script>
@@ -41,7 +41,7 @@
       } else { throw new Error("URL vacía"); }
     })
     .catch(function(e){
-      document.getElementById("msg").textContent = "JARVIS no está en línea ahora.";
+      document.getElementById("msg").textContent = "Mika no está en línea ahora.";
       document.getElementById("sub").innerHTML =
         "Enciende el PC / corre start_jarvis.ps1 y recarga.<br><a href='javascript:location.reload()'>Reintentar</a>";
     });
