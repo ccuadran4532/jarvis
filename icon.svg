@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Wabi cream background -->
+    <radialGradient id="bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%"  stop-color="#f4ecd8"/>
+      <stop offset="100%" stop-color="#d9cdb0"/>
+    </radialGradient>
+
+    <!-- Metallic orb (mismo tono del orb del UI) -->
+    <radialGradient id="orbHi" cx="32%" cy="22%" r="55%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="35%"  stop-color="#fff5dc" stop-opacity="0.45"/>
+      <stop offset="70%"  stop-color="#fff5dc" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbWarm" cx="70%" cy="75%" r="55%">
+      <stop offset="0%"   stop-color="#ffe8be" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffe8be" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbRim" cx="50%" cy="50%" r="55%">
+      <stop offset="50%"  stop-color="#000000" stop-opacity="0"/>
+      <stop offset="88%"  stop-color="#503714" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#3c280f" stop-opacity="0.35"/>
+    </radialGradient>
+    <linearGradient id="orbBase" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#f0e4c8"/>
+      <stop offset="35%"  stop-color="#ece0c4"/>
+      <stop offset="65%"  stop-color="#d8c8a8"/>
+      <stop offset="100%" stop-color="#b8a584"/>
+    </linearGradient>
+
+    <!-- Soft drop shadow -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+      <feOffset dx="0" dy="14" result="o"/>
+      <feFlood flood-color="#7a5a2a" flood-opacity="0.28"/>
+      <feComposite in2="o" operator="in" result="s"/>
+      <feMerge><feMergeNode in="s"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background tile -->
+  <rect width="512" height="512" rx="96" fill="url(#bg)"/>
+
+  <!-- Metallic orb -->
+  <g filter="url(#dropShadow)">
+    <circle cx="256" cy="256" r="170" fill="url(#orbBase)"/>
+    <circle cx="256" cy="256" r="170" fill="url(#orbWarm)"/>
+    <circle cx="256" cy="256" r="170" fill="url(#orbRim)"/>
+    <circle cx="256" cy="256" r="170" fill="url(#orbHi)"/>
+  </g>
+
+  <!-- "J" letterform — Wabi typography, color del text -->
+  <text x="256" y="312"
+        text-anchor="middle"
+        font-family="'Inter', 'Helvetica Neue', Arial, sans-serif"
+        font-weight="300"
+        font-size="180"
+        fill="#3a2a14"
+        opacity="0.78">J</text>
+</svg>
